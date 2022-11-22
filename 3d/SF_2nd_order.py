@@ -1,9 +1,10 @@
 import numpy as np
 import h5py
 import time
-import numba as nb
 
 device = "cpu"
+
+import numba as nb
 
 if device == "gpu":
    import cupy as cp
@@ -24,7 +25,8 @@ Vz = hdf5_reader("U.V3r.h5", "U.V3r")
 
 
 if device == "gpu":
-    dev1 = cp.cuda.Device(1)
+    # select GPU device 
+    dev1 = cp.cuda.Device(1) 
 
     dev1.use()
 ############################
@@ -62,6 +64,8 @@ if device == "gpu":
 
 
 #############################
+#comment this function if device is not cpu
+
 @nb.jit(nopython=True, parallel=True)
 def str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_array_cpu, S_u_r_array_cpu, S_ux_array_cpu, S_uy_array_cpu, S_uz_array_cpu):
 
