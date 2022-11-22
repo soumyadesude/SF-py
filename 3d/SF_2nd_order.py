@@ -83,15 +83,15 @@ def str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_array_
         
         S_array_cpu[Ix[m], Iy[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :, :])
 
-        S_u_r_array_cpu[Ix[m], Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[:, :, :] + del_v[:, :, :]*l_cap_y[:, :, :] + del_w[:, :, :]*l_cap_z[:, :, :])**2)
+        S_u_r_array_cpu[Ix[m], Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[m] + del_v[:, :, :]*l_cap_y[m] + del_w[:, :, :]*l_cap_z[m])**2)
 
         
 
-        S_ux_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[:, :, :])**2)
+        S_ux_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[m])**2)
 
-        S_uy_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_v[:, :, :]*l_cap_y[:, :, :])**2)
+        S_uy_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_v[:, :, :]*l_cap_y[m])**2)
 
-        S_uz_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_w[:, :, :]*l_cap_z[:, :, :])**2)
+        S_uz_array_cpu[Ix[m],  Iy[m], Iz[m]] = np.mean((del_w[:, :, :]*l_cap_z[m])**2)
 
 
         print (m, Ix[m]*dx, Iy[m]*dy, Iz[m]*dz)        
@@ -124,15 +124,15 @@ def str_function_gpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_array,
         
         S_array[Ix[m], Iy[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :, :])
 
-        S_u_r_array[Ix[m], Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[:, :, :] + del_v[:, :, :]*l_cap_y[:, :, :] + del_w[:, :, :]*l_cap_z[:, :, :])**2)
+        S_u_r_array[Ix[m], Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[m] + del_v[:, :, :]*l_cap_y[m] + del_w[:, :, :]*l_cap_z[m])**2)
 
         
 
-        S_ux_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[:, :, :])**2)
+        S_ux_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_u[:, :, :]*l_cap_x[m])**2)
 
-        S_uy_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_v[:, :, :]*l_cap_y[:, :, :])**2)
+        S_uy_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_v[:, :, :]*l_cap_y[m])**2)
 
-        S_uz_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_w[:, :, :]*l_cap_z[:, :, :])**2)
+        S_uz_array[Ix[m],  Iy[m], Iz[m]] = np.mean((del_w[:, :, :]*l_cap_z[m])**2)
 
 
         print (m, Ix[m]*dx, Iy[m]*dx, Iz[m]*dz)        

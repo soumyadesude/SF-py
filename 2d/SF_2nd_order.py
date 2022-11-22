@@ -77,13 +77,13 @@ def str_function_cpu(Vx, Vz, Ix, Iz, l_cap_x, l_cap_z, S_array_cpu, S_u_r_array_
         
         S_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :])
 
-        S_u_r_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :])**2)
+        S_u_r_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m])**2)
 
         
 
-        S_ux_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[:, :])**2)
+        S_ux_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[m])**2)
 
-        S_uz_array_cpu[Ix[m], Iz[m]] = np.mean((del_w[:, :]*l_cap_z[:, :])**2)
+        S_uz_array_cpu[Ix[m], Iz[m]] = np.mean((del_w[:, :]*l_cap_z[m])**2)
 
 
         print (m, Ix[m]*dx, Iz[m]*dz)        
@@ -114,12 +114,12 @@ def str_function_gpu(Vx, Vz, Ix, Iz, l_cap_x, l_cap_z, S_array, S_u_r_array, S_u
         
         S_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :])
 
-        S_u_r_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :])**2)
+        S_u_r_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m])**2)
         
 
-        S_ux_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[:, :])**2)
+        S_ux_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[m])**2)
 
-        S_uz_array[Ix[m], Iz[m]] = cp.mean((del_w[:, :]*l_cap_z[:, :])**2)
+        S_uz_array[Ix[m], Iz[m]] = cp.mean((del_w[:, :]*l_cap_z[m])**2)
 
 
         print (m, Ix[m]*dx, Iz[m]*dz)        

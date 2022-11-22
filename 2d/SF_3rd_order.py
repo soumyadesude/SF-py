@@ -75,15 +75,15 @@ def str_function_cpu(Vx, Vz, Ix, Iz, l_cap_x, l_cap_z, S_upll_array_cpu, S_u_r_a
 
         diff_magnitude_sqr = (del_u)**2 + (del_w)**2     
         
-        S_upll_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :]))
+        S_upll_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m]))
 
-        S_u_r_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :])**3)
+        S_u_r_array_cpu[Ix[m], Iz[m]] = np.mean((del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m])**3)
 
         
 
-        S_ux_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[:, :]))
+        S_ux_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[m]))
 
-        S_uz_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_w[:, :]*l_cap_z[:, :]))
+        S_uz_array_cpu[Ix[m], Iz[m]] = np.mean(diff_magnitude_sqr[:, :]*(del_w[:, :]*l_cap_z[m]))
 
 
         print (m, Ix[m]*dx, Iz[m]*dz)        
@@ -112,15 +112,15 @@ def str_function_gpu(Vx, Vz, Ix, Iz, l_cap_x, l_cap_z, S_upll_array, S_u_r_array
 
         diff_magnitude_sqr = (del_u)**2 + (del_w)**2     
         
-        S_upll_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :]))
+        S_upll_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m]))
 
-        S_u_r_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[:, :] + del_w[:, :]*l_cap_z[:, :])**3)#np.sum(u_par**q)/(np.shape(u_par)[0]*np.shape(u_par)[1]*np.shape(u_par)[2])
+        S_u_r_array[Ix[m], Iz[m]] = cp.mean((del_u[:, :]*l_cap_x[m] + del_w[:, :]*l_cap_z[m])**3)#np.sum(u_par**q)/(np.shape(u_par)[0]*np.shape(u_par)[1]*np.shape(u_par)[2])
 
         
 
-        S_ux_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[:, :]))
+        S_ux_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_u[:, :]*l_cap_x[m]))
 
-        S_uz_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_w[:, :]*l_cap_z[:, :]))
+        S_uz_array[Ix[m], Iz[m]] = cp.mean(diff_magnitude_sqr[:, :]*(del_w[:, :]*l_cap_z[m]))
 
 
         print (m, Ix[m]*dx, Iz[m]*dz)        
