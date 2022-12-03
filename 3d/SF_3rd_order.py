@@ -67,7 +67,7 @@ if device == "gpu":
 #comment this function if device is not cpu
 
 @nb.jit(nopython=True, parallel=True)
-def str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_array_cpu, S_u_r_array_cpu, S_ux_array_cpu, S_uy_array_cpu, S_uz_array_cpu):
+def str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_upll_array_cpu, S_u_r_array_cpu, S_ux_array_cpu, S_uy_array_cpu, S_uz_array_cpu):
 
        
     N = len(l_cap_x) 
@@ -200,7 +200,7 @@ else:
 
     t_str_func_start = time.time()
 
-    str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_array_cpu, S_u_r_array_cpu, S_ux_array_cpu, S_uy_array_cpu, S_uz_array_cpu)
+    str_function_cpu(Vx, Vy, Vz, Ix, Iy, Iz, l_cap_x, l_cap_y, l_cap_z, S_upll_array_cpu, S_u_r_array_cpu, S_ux_array_cpu, S_uy_array_cpu, S_uz_array_cpu)
 
     t_str_func_end = time.time()
 
