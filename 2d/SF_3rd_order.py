@@ -2,7 +2,7 @@ import numpy as np
 import h5py
 import time
 
-device = "cpu"
+device = "cpu" #default device
 
 import numba as nb  #comment this line if device is not cpu
 
@@ -19,13 +19,15 @@ def hdf5_reader(filename,dataset):
     return V
 
 
+# input field
+#change the names of the input file and datasets according to your convenience
 Vx = hdf5_reader("U.V1r.h5", "U.V1r")
 Vz = hdf5_reader("U.V3r.h5", "U.V3r")
 
 
 if device == "gpu":
     # select GPU device
-    dev1 = cp.cuda.Device(1)
+    dev1 = cp.cuda.Device(1) #change the device number based on availability of GPUs.
 
     dev1.use()
 ############################
@@ -144,7 +146,7 @@ for ix in range(Nx//2):
     for iz in range(Nz//2):
         
         l_temp = np.sqrt((ix)**2+(iz)**2)
-        #if (l_temp*dx > 0.4) and (l_temp*dx < 1.2):
+        #if (l_temp*dx > 0.4) and (l_temp*dx < 1.2): ## Upper and lower limit of the length scales for str function ##
         
         l.append(l_temp)
 
