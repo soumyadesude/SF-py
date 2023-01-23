@@ -29,7 +29,34 @@ Please set the following things before you run the code.
     Vx = hdf5_reader("U.V1r.h5", "U.V1r") <br>
     Vz = hdf5_reader("U.V3r.h5", "U.V3r") <br>
 
-Change the input file name and the names of the datasets. The similar thing is applicable for 3d also. 
+Change the input file name and the names of the datasets. The above is the example of 2D input data. The similar thing is applicable for 3d also. 
+
+* 
+    ##input ## 
+    L = 2\*np.pi #Length of the domain 
+
+Change the domain length according to your need. 
+
+
+``SF`` can be executed by the following way at the respective folders (2d/3d).
+
+Example: for 2nd order structure function:
+
+    python SF_2nd_order.py
+
+
+## License
+
+``SF`` is an open-source package made available under the New BSD License.
+
+
+## Contributions and bug reports
+
+Contributions to this project are very welcome.
+If you wish to contribute, please create a branch with a [pull request](https://github.com/soumyadesude/SF-py/pulls) and the proposed changes can be discussed there.
+
+If you find a bug, please open a new [issue](https://github.com/soumyadesude/SF-py/issues) on the GitHub repository to report the bug.
+Please provide sufficient information for the bug to be reproduced.
 
 
 
