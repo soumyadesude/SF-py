@@ -23,10 +23,10 @@
 
 Please set the following things before you run the code. 
 
-* ``# input field
-#change the names of the input file and datasets according to your convenience
-Vx = hdf5_reader("U.V1r.h5", "U.V1r")
-Vz = hdf5_reader("U.V3r.h5", "U.V3r")`` 
+* ``# input field__
+#change the names of the input file and datasets according to your convenience__
+Vx = hdf5_reader("U.V1r.h5", "U.V1r")__
+Vz = hdf5_reader("U.V3r.h5", "U.V3r")`` __
 
 Change the input file name and the names of the datasets. The similar thing is applicable for 3d also. 
 
