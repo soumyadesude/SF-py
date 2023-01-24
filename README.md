@@ -32,8 +32,8 @@ Please set the following things before you run the code.
 Change the input file name and the names of the datasets. The above is the example of 2D input data. The similar thing is applicable for 3d also. 
 
 * 
-    ##input ## 
-    L = 2\*np.pi #Length of the domain 
+    ##input ## <br>
+    L = 2\*np.pi #Length of the domain <br>
 
 Change the domain length according to your need. 
 
