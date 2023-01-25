@@ -13,13 +13,13 @@
 
  
 
-## Installing SF
+## Installing SF-py
 
 ``SF`` relies on a few prerequisites which are Python, h5py, Numba, Cupy [For gpu]. 
 
 
 
-## Running SF
+## Running SF-py
 
 Please set the following things before you run the code. 
 
@@ -38,7 +38,7 @@ Change the input file name and the names of the datasets. The above is the examp
 Change the domain length according to your need. 
 
 
-``SF`` can be executed by the following way at the respective folders (2d/3d).
+``SF-py`` can be executed by the following way at the respective folders (2d/3d).
 
 Example: for 2nd order structure function:
 
@@ -47,7 +47,7 @@ Example: for 2nd order structure function:
 
 ## License
 
-``SF`` is an open-source package made available under the New BSD License.
+``SF-py`` is an open-source package made available under the New BSD License.
 
 
 ## Contributions and bug reports

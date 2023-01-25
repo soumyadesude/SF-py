@@ -1,5 +1,5 @@
 
-# SF
+# SF-py
 # 
 # Copyright (C) 2022, Soumyadeep Chatterjee
 #
