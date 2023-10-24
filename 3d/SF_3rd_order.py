@@ -44,6 +44,8 @@ import time
 
 device = "cpu" #default device 
 
+device_id = 0 #only applicable if gpu is in use
+
 import numba as nb #comment this line if device is not cpu
 
 if device == "gpu":
@@ -67,7 +69,7 @@ Vz = hdf5_reader("U.V3r.h5", "U.V3r")
 
 if device == "gpu":
     # select GPU device
-    dev1 = cp.cuda.Device(1) #change the device number based on availability of GPUs.
+    dev1 = cp.cuda.Device(device_id) #change the device number based on availability of GPUs.
 
     dev1.use()
 ############################

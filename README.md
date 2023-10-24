@@ -7,9 +7,13 @@
 
  All the relevant files are contained in the following directories: 
 
-* ``./2d/`` - contains the scripts to compute second and third order structure functions for two-dimensional input data
+* ``./2d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for two-dimensional input data
 
-* ``./3d/`` - contains the scripts to compute second and third order structure functions for three-dimensional input data
+* ``./2d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for two-dimensional input data
+
+* ``./3d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for three-dimensional input data
+
+* ``./3d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for three-dimensional input data
 
  
 
@@ -38,11 +42,36 @@ Change the input file name and the names of the datasets. The above is the examp
 Change the domain length according to your need. 
 
 
+* 
+    ##device ## <br>
+    device = "cpu" #by default code will run on cpu <br>
+
+Change the device to "gpu" if you need.
+
+
+* 
+    ##device id ## <br>
+    device_id = 0 #by default code will run on gpu0 <br>
+
+Change the device_id accordingly to use a particular gpu on which you want to run the code.
+
+
 ``SF-py`` can be executed by the following way at the respective folders (2d/3d).
 
 Example: for 2nd order structure function:
 
     python SF_2nd_order.py
+
+
+## Output of the SF-py
+
+``SF-py`` outputs "str_function.h5" file, which contains the following datasets: 
+
+
+* ``For 2nd order`` - ``S``: This dataset corresponds to $\langle(\delta u)^2\rangle$.  
+
+
+
 
 
 ## License
