@@ -68,7 +68,7 @@ Example: for 2nd order structure function:
 ``SF-py`` outputs "str_function.h5" file, which contains the following datasets: 
 
 
-* ``For 2nd order`` - ``S``: This dataset corresponds to $\langle(|\delta u|)^2\rangle$. 
+* ``For 2nd order`` - ``S``: This dataset corresponds to $\langle(|\delta u|)^2\rangle$.    
                       ``S_u_r``: This dataset corresponds to $\langle(|\delta u_{\parallel}|)^2\rangle$. <br>  
 
 
