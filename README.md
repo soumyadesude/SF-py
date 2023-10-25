@@ -69,7 +69,7 @@ Example: for 2nd order structure function:
 
 
 * ``For 2nd order`` - ``S``: This dataset corresponds to $\langle(|\delta u|)^2\rangle$.    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``S_u_r``: This dataset corresponds to $\langle(|\delta u_{\parallel}|)^2\rangle$. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``S_u_r``: This dataset corresponds to $\langle(|\delta u_{\parallel}|)^2\rangle$. 
 
 
 
