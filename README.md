@@ -1,6 +1,8 @@
 # SF-py
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10060564.svg)](https://doi.org/10.5281/zenodo.10060564)
  
  Python scripts to compute Structure Function. These codes computes the structure function using the vectorization approach, as shown in https://joss.theoj.org/papers/10.21105/joss.02185. This code is compatible with both CPU and GPU.  
 
