@@ -7,13 +7,13 @@
 
  All the relevant files are contained in the following directories: 
 
-* ``./2d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for two-dimensional input data
+* ``2d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for two-dimensional input data
 
-* ``./2d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for two-dimensional input data
+* ``2d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for two-dimensional input data
 
-* ``./3d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for three-dimensional input data
+* ``3d/SF_2nd_order.py`` - contains the scripts to compute second order structure functions for three-dimensional input data
 
-* ``./3d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for three-dimensional input data
+* ``3d/SF_3rd_order.py`` - contains the scripts to compute third order structure functions for three-dimensional input data
 
  
 
