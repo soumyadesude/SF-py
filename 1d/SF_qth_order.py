@@ -57,7 +57,7 @@ if device == "gpu":
 
 # input field
 #change the names of the input file and datasets according to your convenience
-data = np.loadtxt("time_60.dat")
+data = np.loadtxt("time60.dat")
 
 Vx = data[:, 1]
 
@@ -72,7 +72,7 @@ if device == "gpu":
 ############ Calculate domain params ####
 
 ## input ###
-L = 2*np.pi #Length of the domain 
+L = 100 #Length of the domain 
 
 q = 2 #order of the structure function
 
@@ -93,28 +93,28 @@ if device == "gpu":
 #comment this function if device is not cpu
 
 @nb.jit(nopython=True, parallel=True) 
-def str_function_cpu(Vx,l_cap_x, l_cap_z, S_array_cpu, q):
+def str_function_cpu(Vx,l, Ix, S_array_cpu, q):
 
        
-    N = len(l_cap_x) 
+    N = len(l) 
 
     for m in range(N):
          
-        u1, u2 = Vx[0:Nx-Ix[m], 0:Nz-Iz[m]], Vx[Ix[m]:Nx, Iz[m]:Nz]
+        u1, u2 = Vx[0:Nx-Ix[m]], Vx[Ix[m]:Nx]
 
-        del_u = np.abs(u2[:, :] - u1[:, :])
+        del_u = (u2[:] - u1[:])**2
         
-        S_array_cpu[Ix[m], Iz[m]] = np.mean(del_u[:, :]**q) # S = < (del u)^2> 
+        S_array_cpu[Ix[m]] = np.mean(np.sqrt(del_u[:])**q) # S = < (del u)^2> 
 
-        print (m, Ix[m]*dx, Iz[m]*dz, S_array_cpu[Ix[m], Iz[m]])        
+        print (m, Ix[m]*dx, S_array_cpu[Ix[m]])        
 
     
     return 
 
-def str_function_gpu(Vx,l_cap_x, l_cap_z, S_array, q):
+def str_function_gpu(Vx,l, Ix, S_array, q):
 
        
-    N = len(l_cap_x) 
+    N = len(l) 
 
     Vx = cp.asarray(Vx) # copy the data on cpu
     print ("GPU copy done")
@@ -123,14 +123,14 @@ def str_function_gpu(Vx,l_cap_x, l_cap_z, S_array, q):
     
     for m in range(N):
          
-        u1, u2 = Vx[0:Nx-Ix[m], 0:Nz-Iz[m]], Vx[Ix[m]:Nx, Iz[m]:Nz]
+        u1, u2 = Vx[0:Nx-Ix[m]], Vx[Ix[m]:Nx]
 
-        del_u = cp.abs(u2[:, :] - u1[:, :])   
+        del_u = (u2[:] - u1[:])**2  
         
-        S_array[Ix[m], Iz[m]] = cp.mean(del_u[:, :]**q) # S = < (del u)^2>
+        S_array[Ix[m]] = cp.mean(cp.sqrt(del_u[:])**q) # S = < (del u)^2>
 
 
-        print (m, Ix[m]*dx, Iz[m]*dz, S_array_cpu[Ix[m], Iz[m]])        
+        print (m, Ix[m]*dx, S_array_cpu[Ix[m]])        
 
     
     return 
@@ -144,18 +144,13 @@ count = 0
 t_pre_process_start = time.time()
 
 for ix in range(Nx):
-    for iz in range(Nz):
-        
-        l_temp = np.sqrt((ix)**2+(iz)**2)
-        #if (l_temp*dx > 0.4) and (l_temp*dx < 1.2): ## Upper and lower limit of the length scales for str function ##
-        
-        l.append(l_temp)
+
+        l.append(ix*dx)
 
         Ix.append(ix)
-        Iz.append(iz)
         count += 1
         
-    print (ix, iz)
+        print (ix)
 
 
 t_pre_process_stop = time.time()
@@ -164,12 +159,7 @@ print("preprocess loop = ", t_pre_process_stop - t_pre_process_start)
 
 print("Total count", count)
 
-l, Ix, Iz = np.asarray(l), np.asarray(Ix), np.asarray(Iz)
-
-l_cap_x, l_cap_z = ((Ix[:])/l[:]), ((Iz[:])/l[:])
-
-l_cap_x[0], l_cap_z[0] = 0, 0
-
+l, Ix = np.asarray(l), np.asarray(Ix)
 
 
 ## compute str_function
@@ -177,7 +167,7 @@ if device == "gpu":
 
     t_str_func_start = time.time()
 
-    str_function_gpu(Vx,l_cap_x, l_cap_z, S_array_cpu, q)
+    str_function_gpu(Vx,l, Ix, S_array, q)
 
     t_str_func_end = time.time()
 
@@ -188,7 +178,7 @@ else:
 
     t_str_func_start = time.time()
 
-    str_function_cpu(Vx,l_cap_x, l_cap_z, S_array, q)
+    str_function_cpu(Vx,l, Ix, S_array_cpu, q)
 
     t_str_func_end = time.time()
 
