@@ -203,6 +203,7 @@ if device == "gpu":
 ## save file
 hf = h5py.File("str_function.h5", 'w')
 hf.create_dataset("S", data=S_array_cpu)
+hf.create_dataset("l", data=l)
 
 hf.close()
 
