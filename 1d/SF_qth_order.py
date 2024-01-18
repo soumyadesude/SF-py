@@ -100,9 +100,9 @@ def str_function_cpu(Vx,l, Ix, S_array_cpu, q):
 
     for m in range(N):
          
-        u2 = np.roll(Vx, -Ix[m])
+        u1, u2 = Vx[0:Nx-Ix[m]], Vx[Ix[m]:Nx]
 
-        del_u = (u2[:] - Vx[:])**2
+        del_u = (u2[:] - u1[:])**2
         
         S_array_cpu[Ix[m]] = np.mean(np.sqrt(del_u[:])**q) # S = < (del u)^2> 
 
@@ -123,14 +123,14 @@ def str_function_gpu(Vx,l, Ix, S_array, q):
     
     for m in range(N):
          
-        u2 = cp.roll(Vx, -Ix[m])
+        u1, u2 = Vx[0:Nx-Ix[m]], Vx[Ix[m]:Nx]
 
-        del_u = (u2[:] - Vx[:])**2  
+        del_u = (u2[:] - u1[:])**2  
         
         S_array[Ix[m]] = cp.mean(cp.sqrt(del_u[:])**q) # S = < (del u)^2>
 
 
-        print (m, Ix[m]*dx, S_array[Ix[m]])        
+        print (m, Ix[m]*dx, S_array_cpu[Ix[m]])        
 
     
     return 
