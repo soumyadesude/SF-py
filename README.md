@@ -4,6 +4,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10060564.svg)](https://doi.org/10.5281/zenodo.10060564)
  
+This branch is currently under development for MHD. Only 'str_function.py' is available in the 2D folder.
+
  Python scripts to compute Structure Function. These codes computes the structure function using the vectorization approach, as shown in https://joss.theoj.org/papers/10.21105/joss.02185. This code is compatible with both CPU and GPU.  
 
 
